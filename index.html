@@ -1,200 +1,160 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FK_mellow Journal</title>
   <style>
-    /* Basic Reset and Styling */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #1e1e1e, #2e2e2e);
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
       color: #f0f0f0;
-      padding: 20px;
-      overflow-x: hidden;
     }
 
-    /* Unfolding Animation */
-    .container {
-      max-width: 800px;
-      margin: 50px auto;
-      background-color: #2f2f2f;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-      transform: scale(0);
-      animation: unfold 1.5s ease-out forwards;
+    header {
+      padding: 40px;
+      background-color: #1f1f1f;
+      text-align: center;
+      animation: unfold 1.2s ease-out;
     }
 
     @keyframes unfold {
-      0% { transform: scale(0) rotateX(90deg); opacity: 0; }
-      100% { transform: scale(1) rotateX(0deg); opacity: 1; }
+      0% {
+        transform: scaleY(0.1);
+        transform-origin: top;
+        opacity: 0;
+      }
+      100% {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+    }
+
+    header img {
+      width: 120px;
+      border-radius: 50%;
+      margin-top: 10px;
     }
 
     nav {
-      text-align: center;
-      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      background-color: #252525;
+      padding: 10px 0;
     }
 
     nav a {
-      color: #ffcc70;
+      color: #f0f0f0;
       text-decoration: none;
       margin: 0 15px;
       font-weight: bold;
     }
 
-    h1, h2 {
-      text-align: center;
-      color: #ffcc70;
+    nav a:hover {
+      color: #ffa07a;
     }
 
-    .profile {
-      text-align: center;
+    section {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
     }
 
-    .profile img {
-      border-radius: 50%;
-      width: 120px;
-      margin-top: 20px;
+    h2 {
+      color: #ffa07a;
     }
 
-    .journal-entry {
-      margin-top: 20px;
-    }
-
-    details {
-      background-color: #3b3b3b;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    summary {
-      font-weight: bold;
-      font-size: 1.2em;
+    .accordion {
+      background-color: #1f1f1f;
+      color: #f0f0f0;
       cursor: pointer;
-      color: #ffa726;
+      padding: 15px;
+      margin: 10px 0;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 1.1em;
+      transition: background 0.3s ease;
+    }
+
+    .accordion:hover {
+      background-color: #333;
+    }
+
+    .panel {
+      background-color: #2a2a2a;
+      padding: 15px;
+      display: none;
+      overflow: hidden;
+      margin-bottom: 10px;
+      border-left: 3px solid #ffa07a;
     }
 
     footer {
       text-align: center;
-      margin-top: 50px;
-      font-size: 0.9em;
-      color: #aaaaaa;
-    }
-
-    /* Shooting Game Style */
-    #game-section {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    canvas {
-      background-color: #000;
-      border: 2px solid #fff;
-      margin-top: 10px;
+      padding: 20px;
+      background-color: #1f1f1f;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#journal">Journal</a>
-      <a href="#about">About Me</a>
-      <a href="#contact">Contact</a>
-      <a href="#game-section">Games</a>
-    </nav>
 
-    <section id="home">
-      <h1>Welcome to FK_mellow's Journal</h1>
-      <div class="profile">
-        <img src="https://i.pinimg.com/236x/da/69/fd/da69fdb0bfe936b3b57bc2cb3ef06d6b.jpg" alt="Profile Picture">
-      </div>
-    </section>
+  <header id="home">
+    <h1>FK_mellow's Journal</h1>
+    <img src="https://i.pinimg.com/236x/da/69/fd/da69fdb0bfe936b3b57bc2cb3ef06d6b.jpg" alt="FK_mellow">
+  </header>
 
-    <section id="journal">
-      <h2>My Journal Entries</h2>
-      <div class="journal-entry">
-        <details>
-          <summary>CH-1: Coping Life</summary>
-          <p>As a writer, I have written many unfinished stories... [rest of content remains unchanged]</p>
-        </details>
-        <details>
-          <summary>CH-2: A Legend</summary>
-          <p>Mahmoud Darwish is such a legend who uses few words... [rest of content remains unchanged]</p>
-        </details>
-        <details>
-          <summary>CH-3: Upcoming</summary>
-          <p>Stay tuned for the next chapter...</p>
-        </details>
-      </div>
-    </section>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#journal">Journal</a>
+    <a href="#about">About Me</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    <section id="about">
-      <h2>About Me</h2>
-      <p>I'm FK_mellow — someone who writes from the heart, shares random thoughts, and journals their emotional journeys. I write not for fame, but for connection and reflection.</p>
-    </section>
+  <section id="journal">
+    <h2>Journal Entries</h2>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>You can reach me at: <a href="mailto:pocomythical@gmail.com">pocomythical@gmail.com</a></p>
-    </section>
+    <button class="accordion">CH-1: Coping Life</button>
+    <div class="panel">
+      <p>As a writer, I have written many unfinished stories and random thoughts... [full content you provided]</p>
+    </div>
 
-    <section id="game-section">
-      <h2>Mini Shooting Game</h2>
-      <canvas id="gameCanvas" width="400" height="300"></canvas>
-    </section>
+    <button class="accordion">CH-2: A Legend</button>
+    <div class="panel">
+      <p>Mahmoud Darwish is such a legend who uses few words to express my entire range of emotions... [full content you provided]</p>
+    </div>
 
-    <footer>
-      <p>&copy; 2025 FK_mellow. All rights reserved.</p>
-    </footer>
-  </div>
+    <button class="accordion">CH-3: Coming Soon</button>
+    <div class="panel">
+      <p>New entry is on its way. Stay tuned!</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hello, I'm FK_mellow — a passionate writer who finds comfort in journaling emotions, thoughts, and stories. This is my quiet space to reflect and connect.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>You can reach me at: <a href="mailto:pocomythical@gmail.com">pocomythical@gmail.com</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 FK_mellow. All rights reserved.
+  </footer>
 
   <script>
-    // Simple Shooting Game
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-
-    let targets = [];
-    let score = 0;
-
-    function spawnTarget() {
-      targets.push({ x: Math.random() * 350, y: Math.random() * 250, size: 30 });
-    }
-
-    function drawTargets() {
-      ctx.clearRect(0, 0, 400, 300);
-      for (let t of targets) {
-        ctx.fillStyle = '#ff3333';
-        ctx.beginPath();
-        ctx.arc(t.x, t.y, t.size / 2, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.fillStyle = '#fff';
-      ctx.fillText("Score: " + score, 10, 20);
-    }
-
-    canvas.addEventListener('click', function(e) {
-      const rect = canvas.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      for (let i = targets.length - 1; i >= 0; i--) {
-        let t = targets[i];
-        const dist = Math.hypot(t.x - x, t.y - y);
-        if (dist < t.size / 2) {
-          targets.splice(i, 1);
-          score++;
-          break;
-        }
-      }
+    const accordions = document.querySelectorAll('.accordion');
+    accordions.forEach(button => {
+      button.addEventListener('click', () => {
+        const panel = button.nextElementSibling;
+        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+      });
     });
-
-    setInterval(() => {
-      if (targets.length < 5) spawnTarget();
-      drawTargets();
-    }, 1000);
   </script>
+
 </body>
 </html>
 
